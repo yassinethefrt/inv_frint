@@ -1,0 +1,49 @@
+/* Login.css */
+
+.container {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+
+  background: linear-gradient(
+      0deg,
+      rgba(0, 30, 255, 0.3),
+      rgba(129, 86, 167, 0.3)
+    ),
+    url("https://fr.le360.ma/resizer/widea2fbwRqjQDMJAiHAxK83onQ=/1216x684/filters:format(jpg):quality(70)/cloudfront-eu-central-1.images.arcpublishing.com/le360/SXOK7MWSJFDFFAT3TGTH7KZGO4.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-container {
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Add opacity to the background color for better visibility */
+  box-shadow: 0px 0px 10px 0px #aaaaaa;
+  text-align: center;
+}
+
+.login-input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
