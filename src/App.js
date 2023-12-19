@@ -95,14 +95,18 @@ function App(props) {
           {/* <Route path="/LandingPage" element={<Navbar />} /> */}
           <Route path="/LandingPage" element={<Hero />} />
         </CustomRoutes>
-        <Resource
-          name="users"
-          list={ListUsers}
-          create={CreateUser}
-          edit={EditUser}
-          icon={FaUser}
-          options={{ label: translate("ra.resources.users.name") }}
-        />
+        {(permissions) => [
+          permissions === "Admin" ? (
+            <Resource
+              name="users"
+              list={ListUsers}
+              create={CreateUser}
+              edit={EditUser}
+              icon={FaUser}
+              options={{ label: translate("ra.resources.users.name") }}
+            />
+          ) : null,
+        ]}
 
         <Resource
           name="personnels"
