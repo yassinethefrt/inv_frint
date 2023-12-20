@@ -5,7 +5,7 @@ import { Grid, ListItem } from "@material-ui/core";
 
 const MaterielDashbord = () => {
   const [chartData, setChartData] = useState([]);
-  let apiUrl2 = "http://localhost:8081/materielChart";
+  let apiUrl2 = "https://api-inventaire-x8sq.onrender.com/materielChart";
 
   useEffect(() => {
     axios

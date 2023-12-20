@@ -9,19 +9,33 @@ import Paper from "@mui/material/Paper";
 import axios from "axios";
 
 export default function TablePersonnels() {
-  let apiUrl = "http://localhost:8081/personnelData";
+  let apiUrl = "https://api-inventaire-x8sq.onrender.com/personnelData";
 
   const [data, setData] = React.useState("");
+  const [loading, setLoading] = React.useState(true);
+
   React.useEffect(() => {
     axios
       .get(apiUrl)
       .then((response) => {
         setData(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, [apiUrl]);
+
+  if (loading) {
+    // You can optionally render a loading spinner or message here
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    // If data is empty, return nothing
+    return null;
+  }
+
   return (
     <TableContainer
       component={Paper}
@@ -38,21 +52,20 @@ export default function TablePersonnels() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data &&
-            data.map((x) => (
-              <TableRow
-                key={x.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {x.Grade}
-                </TableCell>
-                <TableCell align="right">{x.Mission}</TableCell>
-                <TableCell align="right">{x.averageAge}</TableCell>
-                <TableCell align="right">{x.uniqueMissionCount}</TableCell>
-                <TableCell align="right">{x.uniqueGradeCount}</TableCell>
-              </TableRow>
-            ))}
+          {data.map((x) => (
+            <TableRow
+              key={x.name}
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {x.Grade}
+              </TableCell>
+              <TableCell align="right">{x.Mission}</TableCell>
+              <TableCell align="right">{x.averageAge}</TableCell>
+              <TableCell align="right">{x.uniqueMissionCount}</TableCell>
+              <TableCell align="right">{x.uniqueGradeCount}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </TableContainer>

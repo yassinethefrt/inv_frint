@@ -4,7 +4,7 @@ import Chart from "chart.js/auto";
 
 const PersonnelsDashboard = () => {
   const [chartData, setChartData] = useState([]);
-  let apiUrl = "http://localhost:8081/personnelChart";
+  let apiUrl = "https://api-inventaire-x8sq.onrender.com/personnelChart";
 
   useEffect(() => {
     axios

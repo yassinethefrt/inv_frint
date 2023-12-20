@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 import axios from "axios";
 
 export default function TableEquipements() {
-  let apiUrl = "http://localhost:8081/equipementsData";
+  let apiUrl = "https://api-inventaire-x8sq.onrender.com/equipementsData";
 
   const [data, setData] = React.useState("");
   React.useEffect(() => {
