@@ -28,7 +28,7 @@ const EditUser = (props) => {
         {/* <PasswordInput source="Password" /> */}
 
         <SelectInput
-          source="role"
+          source="Role"
           allowEmpty
           choices={[
             // { id: "SuperAdmin", name: "SuperAdmin" },

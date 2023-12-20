@@ -20,7 +20,11 @@ const EditMateriel = () => {
     <Edit Toolbar={<EditToolbar />}>
       <SimpleForm>
         <TextInput source="Materiel" required />
-        <ReferenceInput source="GenreMateriel" reference="GenreMateriel">
+        <ReferenceInput
+          source="GenreMateriel"
+          perPage={400}
+          reference="GenreMateriel"
+        >
           <SelectInput optionText="GenreMateriel" />
         </ReferenceInput>
       </SimpleForm>

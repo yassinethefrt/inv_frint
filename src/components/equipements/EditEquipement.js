@@ -19,12 +19,17 @@ const EditEquipement = () => {
     <Edit Toolbar={<EditToolbar />}>
       <SimpleForm>
         <TextInput source="id" disabled />
-        <ReferenceInput source="MaterielID" reference="materiels">
+        <ReferenceInput source="MaterielID" perPage={400} reference="materiels">
           <SelectInput optionText="Materiel" />
         </ReferenceInput>
         <TextInput source="Description" />
 
-        <ReferenceInput source="CentreId" reference="centres" required>
+        <ReferenceInput
+          source="CentreId"
+          reference="centres"
+          perPage={400}
+          required
+        >
           <SelectInput optionText="Centre" />
         </ReferenceInput>
       </SimpleForm>

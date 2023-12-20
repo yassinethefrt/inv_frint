@@ -67,6 +67,7 @@ const CreatePersonel = () => {
               reference="Etablissements"
               required
               className={classes.inputSize}
+              perPage={400}
             >
               <SelectInput
                 optionText="Etablissement"
@@ -75,7 +76,12 @@ const CreatePersonel = () => {
             </ReferenceInput>
           </Grid>
           <Grid item lg={6} md={12} sm={12} xs={12}>
-            <ReferenceInput source="CentreId" reference="centres" required>
+            <ReferenceInput
+              source="CentreId"
+              reference="centres"
+              perPage={400}
+              required
+            >
               <SelectInput
                 optionText="Centre"
                 className={classes.inputSize}
