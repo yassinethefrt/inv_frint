@@ -19,7 +19,13 @@ import { useTranslation } from "react-i18next";
 
 export const MainMenu = () => {
   const { t, i18n } = useTranslation();
-  const permission = "admin";
+  const role = localStorage.getItem("role");
+
+  // Check if role is 'admin' before rendering the menu
+  // if (role !== "Admin") {
+  //   return null; // Don't render anything if role is not 'admin'
+  // }
+
   return (
     <Menu>
       <Menu.DashboardItem />
@@ -28,11 +34,13 @@ export const MainMenu = () => {
         leftIcon={<BookIcon />}
       >
         <>
-          <Menu.Item
-            to="users"
-            primaryText={t("ra.resources.users.name")}
-            leftIcon={<FaUser />}
-          />
+          {role === "Admin" ? (
+            <Menu.Item
+              to="users"
+              primaryText={t("ra.resources.users.name")}
+              leftIcon={<FaUser />}
+            />
+          ) : null}
           {/* Add more Menu.Item components for admin here if needed */}
         </>
 
@@ -57,11 +65,16 @@ export const MainMenu = () => {
           primaryText={t("ra.resources.materiels.name")}
           leftIcon={<FaBoxesStacked />}
         />
-        <Menu.Item
-          to="equipements"
-          primaryText={t("ra.resources.equipements.name")}
-          leftIcon={<FaBoxesPacking />}
-        />
+        <>
+          {role === "Admin" ? (
+            <Menu.Item
+              to="equipements"
+              primaryText={t("ra.resources.equipements.name")}
+              leftIcon={<FaUser />}
+            />
+          ) : null}
+          {/* Add more Menu.Item components for admin here if needed */}
+        </>
       </SubMenu>
       <SubMenu
         primaryText={t("ra.resources.etablissements.name")}

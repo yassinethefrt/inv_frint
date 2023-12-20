@@ -10,7 +10,6 @@ import {
   useTranslate,
 } from "react-admin";
 import { ImportButton } from "react-admin-import-csv";
-import FilterPersonel from "./FilterPersonel";
 
 const ListActions = (props) => {
   const {
@@ -33,7 +32,6 @@ const ListActions = (props) => {
         exporter={exporter}
       />
       <ImportButton {...props} />
-      {/* <FilterButton {...props} /> */}
     </TopToolbar>
   );
 };
@@ -41,17 +39,8 @@ const ListActions = (props) => {
 const ListPersonel = (props) => {
   const translate = useTranslate();
   return (
-    <List {...props} actions={<ListActions />}>
-      <Datagrid
-        bulkActionButtons={false}
-        rowClick="edit"
-        // sx={{
-        //   backgroundColor: "Lavender",
-        //   "& .RaDatagrid-headerCell": {
-        //     backgroundColor: "MistyRose",
-        //   },
-        // }}
-      >
+    <List actions={<ListActions />}>
+      <Datagrid bulkActionButtons={false} {...props} rowClick="edit">
         <TextField
           source="Nom"
           label={translate("ra.resources.personnels.fields.nom")}
@@ -87,7 +76,7 @@ const ListPersonel = (props) => {
         <TextField
           source="Etablissement"
           label={translate("ra.resources.personnels.fields.Etablissement")}
-        />{" "}
+        />
         <TextField
           source="Centre"
           label={translate("ra.resources.personnels.fields.Centre")}

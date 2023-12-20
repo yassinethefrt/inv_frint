@@ -89,7 +89,7 @@ function App(props) {
         dashboard={Dashboard}
         i18nProvider={i18nProvider}
         layout={MyLayout}
-        // menu={MainMenu}
+        menu={MainMenu}
       >
         <CustomRoutes noLayout>
           {/* <Route path="/LandingPage" element={<Navbar />} /> */}
@@ -110,8 +110,8 @@ function App(props) {
             <Resource
               name="personnels"
               list={ListPersonel}
-              create={permissions === "Admin" ? CreatePersonel : null}
-              edit={EditPersonel}
+              create={CreatePersonel}
+              edit={permissions === "Admin" ? EditPersonel : null}
               options={{ label: translate("ra.resources.personnels.name") }}
               icon={FaUsers}
             />
@@ -121,52 +121,62 @@ function App(props) {
               name="etablissements"
               list={ListEtablissement}
               create={CreateEtablissement}
-              edit={permissions === "Admin" ? EditEtablissement : null}
+              edit={EditEtablissement}
               options={{ label: translate("ra.resources.etablissements.name") }}
               icon={FaBuilding}
             />
           ) : null,
+          permissions === "Admin" || permissions === "User" ? (
+            <Resource
+              name="centres"
+              list={ListCentres}
+              create={CreateCentre}
+              edit={EditCentre}
+              icon={MdMapsHomeWork}
+              options={{ label: translate("ra.resources.centres.name") }}
+            />
+          ) : null,
+          permissions === "Admin" || permissions === "User" ? (
+            <Resource
+              name="materiels"
+              list={ListMateriel}
+              create={CreateMateriel}
+              edit={EditMateriel}
+              options={{ label: translate("ra.resources.materiels.name") }}
+              icon={FaBoxesStacked}
+            />
+          ) : null,
+          permissions === "Admin" || permissions === "User" ? (
+            <Resource
+              name="genreMateriel"
+              list={GenrematerielList}
+              create={CreategenreMateriel}
+              edit={GenrematerielEdit}
+              options={{ label: translate("ra.resources.materiels.name") }}
+              icon={FaBoxesStacked}
+            />
+          ) : null,
+          permissions === "Admin" ? (
+            <Resource
+              name="equipements"
+              list={ListEquipement}
+              create={CreateEquipement}
+              edit={EditEquipement}
+              options={{ label: translate("ra.resources.equipements.name") }}
+              icon={FaBoxesPacking}
+            />
+          ) : null,
+          permissions === "Admin" || permissions === "User" ? (
+            <Resource
+              name="besoins"
+              list={ListBesoin}
+              create={CreateBesoin}
+              edit={permissions === "Admin" ? EditBesoin : null}
+              options={{ label: translate("ra.resources.equipements.name") }}
+              icon={FaBoxesPacking}
+            />
+          ) : null,
         ]}
-        <Resource
-          name="centres"
-          list={ListCentres}
-          create={CreateCentre}
-          edit={EditCentre}
-          icon={MdMapsHomeWork}
-          options={{ label: translate("ra.resources.centres.name") }}
-        />
-        <Resource
-          name="materiels"
-          list={ListMateriel}
-          create={CreateMateriel}
-          edit={EditMateriel}
-          options={{ label: translate("ra.resources.materiels.name") }}
-          icon={FaBoxesStacked}
-        />
-        <Resource
-          name="genreMateriel"
-          list={GenrematerielList}
-          create={CreategenreMateriel}
-          edit={GenrematerielEdit}
-          options={{ label: translate("ra.resources.materiels.name") }}
-          icon={FaBoxesStacked}
-        />
-        <Resource
-          name="equipements"
-          list={ListEquipement}
-          create={CreateEquipement}
-          edit={EditEquipement}
-          options={{ label: translate("ra.resources.equipements.name") }}
-          icon={FaBoxesPacking}
-        />
-        <Resource
-          name="besoins"
-          list={ListBesoin}
-          create={CreateBesoin}
-          edit={EditBesoin}
-          options={{ label: translate("ra.resources.equipements.name") }}
-          icon={FaBoxesPacking}
-        />
       </Admin>
     </IntlProvider>
   );
