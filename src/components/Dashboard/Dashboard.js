@@ -11,8 +11,6 @@ const Dashboard = () => {
       {/* <BoxesTotal /> */}
       <PersonnelsDashboard />
       <TablePersonnels />
-
-      <h2 style={{ textAlign: "center" }}> Materiels || التجهيزات </h2>
       <MaterielDashbord />
       <TableEquipements />
     </div>

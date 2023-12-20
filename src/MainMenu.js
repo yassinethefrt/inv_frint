@@ -13,12 +13,13 @@ import {
   FaUserTie,
   FaUsers,
 } from "react-icons/fa6";
+import { BiSolidMessageRoundedCheck } from "react-icons/bi";
 import { MdMapsHomeWork } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 
 export const MainMenu = () => {
   const { t, i18n } = useTranslation();
-
+  const permission = "admin";
   return (
     <Menu>
       <Menu.DashboardItem />
@@ -26,11 +27,15 @@ export const MainMenu = () => {
         primaryText={t("ra.resources.personnels.name")}
         leftIcon={<BookIcon />}
       >
-        <Menu.Item
-          to="users"
-          primaryText={t("ra.resources.users.name")}
-          leftIcon={<FaUser />}
-        />
+        <>
+          <Menu.Item
+            to="users"
+            primaryText={t("ra.resources.users.name")}
+            leftIcon={<FaUser />}
+          />
+          {/* Add more Menu.Item components for admin here if needed */}
+        </>
+
         <Menu.Item
           to="personnels"
           primaryText={t("ra.resources.personnels.name")}
@@ -76,7 +81,7 @@ export const MainMenu = () => {
       <Menu.Item
         to="besoins"
         primaryText={t("ra.resources.besoins.name")}
-        leftIcon={<FaCreditCard />}
+        leftIcon={<BiSolidMessageRoundedCheck />}
       />
     </Menu>
   );

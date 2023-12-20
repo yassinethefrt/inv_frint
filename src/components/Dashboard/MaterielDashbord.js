@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Chart from "chart.js/auto";
-import { Grid, ListItem } from "@material-ui/core";
 
 const MaterielDashbord = () => {
   const [chartData, setChartData] = useState([]);

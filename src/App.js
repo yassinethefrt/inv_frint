@@ -89,7 +89,7 @@ function App(props) {
         dashboard={Dashboard}
         i18nProvider={i18nProvider}
         layout={MyLayout}
-        menu={MainMenu}
+        // menu={MainMenu}
       >
         <CustomRoutes noLayout>
           {/* <Route path="/LandingPage" element={<Navbar />} /> */}
@@ -99,31 +99,34 @@ function App(props) {
           permissions === "Admin" ? (
             <Resource
               name="users"
-              list={ListUsers}
-              create={CreateUser}
+              list={permissions === "Admin" ? ListUsers : null}
+              create={permissions === "Admin" ? CreateUser : null}
               edit={EditUser}
-              icon={FaUser}
               options={{ label: translate("ra.resources.users.name") }}
             />
           ) : null,
-        ]}
 
-        <Resource
-          name="personnels"
-          list={ListPersonel}
-          create={CreatePersonel}
-          edit={EditPersonel}
-          options={{ label: translate("ra.resources.personnels.name") }}
-          icon={FaUsers}
-        />
-        <Resource
-          name="etablissements"
-          list={ListEtablissement}
-          create={CreateEtablissement}
-          edit={EditEtablissement}
-          options={{ label: translate("ra.resources.etablissements.name") }}
-          icon={FaBuilding}
-        />
+          permissions === "Admin" || permissions === "User" ? (
+            <Resource
+              name="personnels"
+              list={ListPersonel}
+              create={permissions === "Admin" ? CreatePersonel : null}
+              edit={EditPersonel}
+              options={{ label: translate("ra.resources.personnels.name") }}
+              icon={FaUsers}
+            />
+          ) : null,
+          permissions === "Admin" || permissions === "User" ? (
+            <Resource
+              name="etablissements"
+              list={ListEtablissement}
+              create={CreateEtablissement}
+              edit={permissions === "Admin" ? EditEtablissement : null}
+              options={{ label: translate("ra.resources.etablissements.name") }}
+              icon={FaBuilding}
+            />
+          ) : null,
+        ]}
         <Resource
           name="centres"
           list={ListCentres}
